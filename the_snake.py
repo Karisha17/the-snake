@@ -7,7 +7,7 @@ SCREEN_WIDTH, SCREEN_HEIGHT = 640, 480
 GRID_SIZE = 20
 GRID_WIDTH = SCREEN_WIDTH // GRID_SIZE
 GRID_HEIGHT = SCREEN_HEIGHT // GRID_SIZE
-HALF_SCREEN = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
+HALF_SCREEN_POSITION = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
 
 # Направления движения:
 UP = (0, -1)
@@ -57,7 +57,7 @@ class GameObject:
             body_color: Цвет объекта.
             border_color: Цвет границы ячейки.
         """
-        self.position = HALF_SCREEN
+        self.position = HALF_SCREEN_POSITION
         self.body_color = body_color
         self.border_color = border_color
 
@@ -89,7 +89,7 @@ class Apple(GameObject):
     """
 
     def __init__(self, body_color=APPLE_COLOR, border_color=BORDER_COLOR,
-                 occupied_positions=(HALF_SCREEN,)):
+                 occupied_positions=(HALF_SCREEN_POSITION,)):
         """Инициализирует атрибуты класса.
 
         Аргументы:
