@@ -7,7 +7,7 @@ SCREEN_WIDTH, SCREEN_HEIGHT = 640, 480
 GRID_SIZE = 20
 GRID_WIDTH = SCREEN_WIDTH // GRID_SIZE
 GRID_HEIGHT = SCREEN_HEIGHT // GRID_SIZE
-HALF_SCREEN_WIDTH, HALF_SCREEN_HEIGHT = SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2
+HALF_SCREEN = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
 
 # Направления движения:
 UP = (0, -1)
@@ -57,7 +57,7 @@ class GameObject:
             body_color: Цвет объекта.
             border_color: Цвет границы ячейки.
         """
-        self.position = (HALF_SCREEN_WIDTH, HALF_SCREEN_HEIGHT)
+        self.position = HALF_SCREEN
         self.body_color = body_color
         self.border_color = border_color
 
@@ -89,8 +89,7 @@ class Apple(GameObject):
     """
 
     def __init__(self, body_color=APPLE_COLOR, border_color=BORDER_COLOR,
-                 occupied_positions=((HALF_SCREEN_WIDTH,
-                                      HALF_SCREEN_HEIGHT),)):
+                 occupied_positions=(HALF_SCREEN,)):
         """Инициализирует атрибуты класса.
 
         Аргументы:
@@ -110,13 +109,10 @@ class Apple(GameObject):
                 которые нужно исключить при выборе новой позиции.
         """
         while True:
-            new_position = (
-                randint(0, GRID_WIDTH - 1) * GRID_SIZE,
-                randint(0, GRID_HEIGHT - 1) * GRID_SIZE,
-            )
-            if new_position not in occupied_positions:
-                self.position = new_position
-                return
+            self.position = (randint(0, GRID_WIDTH - 1) * GRID_SIZE,
+                             randint(0, GRID_HEIGHT - 1) * GRID_SIZE,)
+            if self.position not in occupied_positions:
+                break
 
     def draw(self):
         """Отрисовка объекта."""
