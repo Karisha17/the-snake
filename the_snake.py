@@ -109,8 +109,10 @@ class Apple(GameObject):
                 которые нужно исключить при выборе новой позиции.
         """
         while True:
-            self.position = (randint(0, GRID_WIDTH - 1) * GRID_SIZE,
-                             randint(0, GRID_HEIGHT - 1) * GRID_SIZE,)
+            self.position = (
+                randint(0, GRID_WIDTH - 1) * GRID_SIZE,
+                randint(0, GRID_HEIGHT - 1) * GRID_SIZE
+            )
             if self.position not in occupied_positions:
                 break
 
@@ -187,14 +189,11 @@ def handle_keys(game_object):
         elif event.type == pg.KEYDOWN:
             if event.key == pg.K_UP and game_object.direction != DOWN:
                 game_object.next_direction = UP
-            elif (event.key == pg.K_DOWN
-                  and game_object.direction != UP):
+            elif event.key == pg.K_DOWN and game_object.direction != UP:
                 game_object.next_direction = DOWN
-            elif (event.key == pg.K_LEFT
-                  and game_object.direction != RIGHT):
+            elif event.key == pg.K_LEFT and game_object.direction != RIGHT:
                 game_object.next_direction = LEFT
-            elif (event.key == pg.K_RIGHT
-                  and game_object.direction != LEFT):
+            elif event.key == pg.K_RIGHT and game_object.direction != LEFT:
                 game_object.next_direction = RIGHT
 
 
